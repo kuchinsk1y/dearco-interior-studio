@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  grid-template-columns: calc(1158 * var(--u)) calc(154 * var(--u)) 1fr;
+  /* 190px after the posts list */
+  margin-top: calc(190 * var(--u));
+}
+
+.media {
+  grid-column: 1;
+  height: calc(621 * var(--u));
+  margin-top: calc(2 * var(--u));
+}
+
+.intro {
+  grid-column: 3;
+  margin-top: calc(53 * var(--u));
+}
+
+@media (max-width: 1199px) {
+  .section {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  .media {
+    grid-column: 1;
+    height: auto;
+    margin-top: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .intro {
+    grid-column: 1;
+    margin: 3rem var(--page-pad) 0;
+  }
+}

@@ -1,0 +1,54 @@
+.section {
+  /* the frame starts 68px above the end of the products grid's frame; the quote sits 274px below it */
+  padding-block: calc(274 * var(--u)) calc(204 * var(--u));
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.quoteWrap {
+  width: calc(1072 * var(--u));
+  max-width: 100%;
+}
+
+.quote {
+  font-family: var(--font-nav);
+  font-size: max(1.25rem, calc(60 * var(--u)));
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  color: var(--color-accent);
+}
+
+.author {
+  margin-top: calc(67 * var(--u));
+  font-family: var(--font-display);
+  font-size: calc(64.495 * var(--u) * var(--fit-display));
+  line-height: 1;
+  letter-spacing: calc(3.2248 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+@media (max-width: 1199px) {
+  .section {
+    padding: var(--section-gap) var(--page-pad);
+  }
+
+  .quoteWrap {
+    width: 100%;
+  }
+
+  .quote {
+    font-size: clamp(1.375rem, 5.5vw, 3rem);
+  }
+
+  .author {
+    margin-top: 2rem;
+    font-size: clamp(1.5rem, 6vw, 3rem);
+  }
+}

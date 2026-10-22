@@ -1,0 +1,111 @@
+.section {
+  display: grid;
+  grid-template-columns:
+    calc(226 * var(--u))
+    calc(625 * var(--u))
+    calc(401 * var(--u))
+    calc(37 * var(--u))
+    calc(401 * var(--u))
+    1fr;
+  /* 168px of space after the projects list, 96px below the photos */
+  padding-block: calc(168 * var(--u)) calc(96 * var(--u));
+}
+
+.content {
+  grid-column: 2;
+  grid-row: 1;
+  padding-top: calc(96 * var(--u));
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: calc(126.745 * var(--u) * var(--fit-display));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(6.3373 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+
+.text {
+  width: calc(472 * var(--u));
+  margin-top: calc(39 * var(--u));
+  font-family: var(--font-nav);
+  font-size: max(0.875rem, calc(20 * var(--u)));
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+.explore {
+  margin-top: calc(91 * var(--u));
+  margin-left: calc(-12 * var(--u));
+}
+
+.photoTall,
+.photoWide {
+  grid-row: 1;
+  display: grid;
+}
+
+.photoTall {
+  grid-column: 3;
+  height: calc(588 * var(--u));
+  margin-top: calc(108 * var(--u));
+}
+
+.photoWide {
+  grid-column: 5;
+  height: calc(480 * var(--u));
+  margin-top: calc(110 * var(--u));
+}
+
+@media (max-width: 1199px) {
+  .section {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 1rem;
+    padding: var(--section-gap) var(--page-pad);
+  }
+
+  .content {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    padding-top: 0;
+  }
+
+  .title {
+    font-size: var(--fs-title);
+    letter-spacing: 0.05em;
+    white-space: normal;
+  }
+
+  .text {
+    width: auto;
+    max-width: 36rem;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .explore {
+    margin: 2rem 0 0;
+  }
+
+  .photoTall,
+  .photoWide {
+    grid-row: auto;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .photoTall {
+    grid-column: 1;
+    aspect-ratio: 401 / 588;
+  }
+
+  .photoWide {
+    grid-column: 2;
+    align-self: start;
+    aspect-ratio: 401 / 480;
+  }
+}

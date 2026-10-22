@@ -1,0 +1,45 @@
+@import 'lenis/dist/lenis.css';
+@import '@fontsource/roboto-condensed/300.css';
+@import '@fontsource/roboto-condensed/400.css';
+@import '@fontsource/roboto-condensed/500.css';
+@import '@fontsource/bebas-neue/400.css';
+@import './reset.css';
+@import './variables.css';
+
+body {
+  font-family: var(--font-nav);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+main {
+  overflow-x: clip;
+}
+
+::selection {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* content fades out and back in while the language is being switched */
+main,
+footer {
+  transition: opacity 0.22s ease;
+}
+
+html[data-switching='true'] main,
+html[data-switching='true'] footer {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main,
+  footer {
+    transition: none;
+  }
+}

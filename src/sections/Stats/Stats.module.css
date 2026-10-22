@@ -1,0 +1,77 @@
+.section {
+  /* 96px to the next section */
+  margin-bottom: calc(96 * var(--u));
+  border-block: calc(2 * var(--u)) solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(197 * var(--u));
+  padding-inline: calc(108 * var(--u)) calc(100 * var(--u));
+}
+
+.item {
+  display: grid;
+  place-items: center;
+}
+
+/* the number sits behind the label */
+.value,
+.label {
+  grid-area: 1 / 1;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: calc(126.745 * var(--u) * var(--fit-display));
+  font-weight: 300;
+  line-height: 1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-accent);
+  opacity: 0.3;
+}
+
+.label {
+  position: relative;
+  font-family: var(--font-nav);
+  font-size: max(0.75rem, calc(22 * var(--u)));
+  font-weight: 500;
+  letter-spacing: calc(8.8 * var(--u));
+  /* balances the trailing letter-spacing so the word stays centred over the number */
+  margin-right: calc(-8.8 * var(--u));
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+@media (max-width: 1199px) {
+  .section {
+    margin-bottom: 0;
+  }
+
+  .list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1rem;
+    height: auto;
+    padding: 3rem var(--page-pad);
+  }
+
+  .value {
+    font-size: clamp(3rem, 12vw, 5.5rem);
+  }
+
+  .label {
+    margin-right: -0.2em;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (max-width: 599px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

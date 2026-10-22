@@ -1,0 +1,39 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(22 * var(--u));
+  color: var(--color-accent);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: calc(50 * var(--u) * var(--fit-display));
+  line-height: normal;
+  letter-spacing: calc(2.5 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  text-box: trim-both cap alphabetic;
+}
+
+.arrow {
+  width: calc(112 * var(--u));
+  height: calc(37.5 * var(--u));
+  rotate: 180deg;
+  transition: translate 0.5s var(--ease-out);
+}
+
+.link:hover .arrow,
+.link:focus-visible .arrow {
+  /* the arrow is mirrored, so a negative offset moves it to the right */
+  translate: calc(-16 * var(--u)) 0;
+}
+
+@media (max-width: 1199px) {
+  .label {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .arrow {
+    width: 5rem;
+    height: auto;
+  }
+}

@@ -1,0 +1,136 @@
+.list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+  height: calc(611 * var(--u));
+}
+
+.panel {
+  position: relative;
+  display: block;
+  height: 100%;
+  overflow: clip;
+  border: calc(2 * var(--u)) solid var(--color-border-muted);
+  transition: border-color 0.7s var(--ease-out);
+}
+
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: scale 1.2s var(--ease-out);
+}
+
+/* dims the photo; the featured panel (and a hovered one) gets a warm tint instead */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: color-mix(in srgb, var(--color-bg) 96%, transparent);
+  transition: background-color 0.7s var(--ease-out);
+}
+
+.featured {
+  border-color: var(--color-accent);
+}
+
+.featured .overlay {
+  background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+.label {
+  position: absolute;
+  top: calc(512 * var(--u));
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: calc(22 * var(--u));
+  translate: -50% 0;
+  transition:
+    opacity 0.5s var(--ease-out),
+    translate 0.7s var(--ease-out);
+}
+
+.label img {
+  width: calc(97.5 * var(--u));
+  height: calc(37.5 * var(--u));
+}
+
+.lineRight {
+  rotate: 180deg;
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: calc(45 * var(--u) * var(--fit-display));
+  line-height: normal;
+  letter-spacing: calc(2.25 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-box: trim-both cap alphabetic;
+}
+
+.panel:hover,
+.panel:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.panel:hover .overlay,
+.panel:focus-visible .overlay {
+  background-color: color-mix(in srgb, var(--color-accent) 30%, transparent);
+}
+
+.panel:hover .image,
+.panel:focus-visible .image {
+  scale: 1.06;
+}
+
+.panel:hover .label,
+.panel:focus-visible .label {
+  opacity: 0;
+  translate: -50% calc(20 * var(--u));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .image,
+  .overlay,
+  .label {
+    transition: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .item {
+    height: auto;
+    aspect-ratio: 480 / 611;
+  }
+
+  .label {
+    top: auto;
+    bottom: 7%;
+  }
+
+  .name {
+    font-size: clamp(1rem, 3.6vw, 2.8rem);
+  }
+}
+
+@media (max-width: 699px) {
+  .label img {
+    display: none;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1199px) {
+  .label img {
+    width: clamp(2rem, 7vw, 6rem);
+  }
+}

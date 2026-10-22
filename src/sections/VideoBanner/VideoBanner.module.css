@@ -1,0 +1,83 @@
+.section {
+  position: relative;
+  height: calc(700 * var(--u));
+  /* 282px of space after the previous block; the banner bleeds 86px past the viewport */
+  margin: calc(282 * var(--u)) calc(-86 * var(--u)) 0;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 40%);
+  pointer-events: none;
+}
+
+.play {
+  position: absolute;
+  top: calc(50% - 35.17 * var(--u));
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.text {
+  position: absolute;
+  top: calc(302 * var(--u));
+  right: calc(192 * var(--u));
+  text-align: right;
+  color: var(--color-text);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: calc(126.745 * var(--u) * var(--fit-display));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(6.3373 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.description {
+  width: calc(431 * var(--u));
+  margin-top: calc(12 * var(--u));
+  margin-left: auto;
+  margin-right: calc(4 * var(--u));
+  font-family: var(--font-nav);
+  font-size: max(0.875rem, calc(20 * var(--u)));
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1199px) {
+  .section {
+    height: clamp(26rem, 80vw, 40rem);
+    margin: 0;
+  }
+
+  .play {
+    top: 36%;
+  }
+
+  .text {
+    top: auto;
+    right: var(--page-pad);
+    bottom: 1.5rem;
+    left: var(--page-pad);
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 7.5vw, 4rem);
+    letter-spacing: 0.05em;
+  }
+
+  .description {
+    width: min(26.9rem, 100%);
+    margin-right: 0;
+    font-size: 1rem;
+  }
+}

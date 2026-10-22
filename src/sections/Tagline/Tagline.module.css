@@ -1,0 +1,36 @@
+.section {
+  display: grid;
+  place-items: center;
+  min-height: calc(201 * var(--u));
+  padding: calc(40 * var(--u)) calc(120 * var(--u));
+  /* 108px after the clients block */
+  margin-top: calc(108 * var(--u));
+  border-block: calc(2 * var(--u)) solid color-mix(in srgb, var(--color-accent) 20%, transparent);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: calc(126.745 * var(--u) * var(--fit-display));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(6.3373 * var(--u) * var(--fit-display));
+  text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-accent);
+}
+
+@media (max-width: 1199px) {
+  .section {
+    min-height: 0;
+    margin-top: 0;
+    padding: 2.5rem var(--page-pad);
+  }
+
+  .title {
+    font-size: clamp(1.75rem, 6.5vw, 4rem);
+    letter-spacing: 0.05em;
+    white-space: normal;
+    text-wrap: balance;
+  }
+}

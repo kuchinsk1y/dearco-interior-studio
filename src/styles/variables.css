@@ -1,0 +1,40 @@
+/* Design tokens, taken from the Figma file "De Arco_Interior". */
+:root {
+  /* Colors */
+  --color-bg: #0d1808;
+  --color-accent: #9e8464;
+  --color-text: #fff;
+  --color-placeholder: #3d4639;
+  --color-border-muted: #3a3b29;
+
+  /* Typography.
+     "Capitol" is the font used in the design (not on Google Fonts); drop the
+     files into src/assets/fonts and declare @font-face in fonts.css.
+     Bebas Neue is the stand-in until then. */
+  --font-display: 'Capitol', 'Bebas Neue', sans-serif;
+  --font-nav: 'Roboto Condensed', sans-serif;
+
+  /* Width correction for the stand-in display font (Bebas Neue is wider than
+     Capitol). Set all of them to 1 once Capitol is installed. */
+  --fit-hero: 0.72;
+  --fit-logo: 0.66;
+  --fit-display: 0.9;
+
+  /* Fluid unit: 1 design px at the 1920px Figma artboard width. */
+  --u: calc(min(100vw, 1920px) / 1920);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Below 1200px the fluid artboard scale is replaced by regular pixels and every
+   section switches to a stacked layout (see the media queries in each module). */
+@media (max-width: 1199px) {
+  :root {
+    --u: 1px;
+    --page-pad: clamp(1.25rem, 5vw, 3rem);
+    --section-gap: clamp(4rem, 11vw, 7rem);
+    --fs-title: clamp(2.25rem, 9vw, 4.5rem);
+    --fs-hero: clamp(2.75rem, 13.5vw, 7.5rem);
+  }
+}

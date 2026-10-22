@@ -1,0 +1,46 @@
+.intro {
+  --intro-text-width: 425;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: calc(126.745 * var(--u) * var(--fit-display));
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: calc(6.3373 * var(--u) * var(--fit-display));
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-accent);
+}
+
+.line {
+  display: inline;
+}
+
+.text {
+  width: calc(var(--intro-text-width) * var(--u));
+  /* keeps the link at a fixed distance below the heading regardless of the line count */
+  min-height: calc(158 * var(--u));
+  margin-top: calc(39 * var(--u));
+  font-family: var(--font-nav);
+  font-size: max(0.875rem, calc(20 * var(--u)));
+  font-weight: 300;
+  line-height: normal;
+  color: var(--color-text);
+}
+
+@media (max-width: 1199px) {
+  .title {
+    font-size: var(--fs-title);
+    letter-spacing: 0.05em;
+    white-space: normal;
+  }
+
+  .text {
+    width: auto;
+    max-width: 36rem;
+    min-height: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}

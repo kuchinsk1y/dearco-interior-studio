@@ -1,0 +1,147 @@
+.switcher {
+  position: relative;
+  font-family: var(--font-nav);
+  color: var(--color-accent);
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  height: calc(38 * var(--u));
+  padding-inline: calc(14 * var(--u));
+  border: 1px solid var(--color-accent);
+  font-size: max(0.75rem, calc(20 * var(--u)));
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.toggle:hover,
+.toggle[aria-expanded='true'] {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+
+.chevron {
+  width: 0.4em;
+  height: 0.4em;
+  margin-top: -0.15em;
+  border-right: 1.5px solid currentcolor;
+  border-bottom: 1.5px solid currentcolor;
+  rotate: 45deg;
+  transition: rotate 0.3s var(--ease-out);
+}
+
+.toggle[aria-expanded='true'] .chevron {
+  rotate: 225deg;
+  margin-top: 0.15em;
+}
+
+.list {
+  position: absolute;
+  top: calc(100% + 8 * var(--u));
+  right: 0;
+  z-index: 5;
+  min-width: calc(190 * var(--u));
+  padding-block: 0.25rem;
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-bg);
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 -0.5rem;
+  transition:
+    opacity 0.3s var(--ease-out),
+    translate 0.3s var(--ease-out),
+    visibility 0.3s;
+}
+
+.list[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  translate: 0 0;
+}
+
+.option {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: max(0.875rem, calc(20 * var(--u)));
+  font-weight: 300;
+  text-align: left;
+  color: var(--color-text);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.option:hover,
+.option:focus-visible {
+  color: var(--color-bg);
+  background-color: var(--color-accent);
+}
+
+.option[aria-current='true'] {
+  color: var(--color-accent);
+}
+
+.option[aria-current='true']:hover,
+.option[aria-current='true']:focus-visible {
+  color: var(--color-bg);
+}
+
+.optionCode {
+  min-width: 1.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1199px) {
+  /* inside the full-screen menu the languages are always visible, as a row */
+  .toggle {
+    display: none;
+  }
+
+  .list {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    opacity: 1;
+    visibility: visible;
+    translate: none;
+    background: none;
+  }
+
+  .option {
+    padding: 0.5rem 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+
+  .option[aria-current='true'] {
+    color: var(--color-bg);
+    background-color: var(--color-accent);
+  }
+
+  .optionName {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .chevron,
+  .list,
+  .option {
+    transition: none;
+  }
+}

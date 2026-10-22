@@ -1,0 +1,97 @@
+.hero {
+  position: relative;
+}
+
+.banner {
+  position: relative;
+  height: calc(675 * var(--u));
+  /* the Figma frame is 42px wider than the viewport on both sides */
+  margin-inline: calc(-42 * var(--u));
+  border: calc(2 * var(--u)) solid var(--color-accent);
+  overflow: clip;
+}
+
+.banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgb(0 0 0 / 25%);
+}
+
+.image {
+  position: absolute;
+  /* extra height on both sides gives the parallax room to move */
+  inset: -25% 0 auto;
+  width: 100%;
+  height: 150%;
+  object-fit: cover;
+  object-position: 50% 60%;
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+  animation: banner-reveal 2s var(--ease-out) both;
+}
+
+@keyframes banner-reveal {
+  from {
+    scale: 1.15;
+  }
+
+  to {
+    scale: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    animation: none;
+  }
+}
+
+.title {
+  /* the title overlaps the bottom edge of the banner */
+  margin-top: calc(-125 * var(--u) * var(--fit-hero));
+  padding-left: calc(98 * var(--u));
+  position: relative;
+  font-family: var(--font-display);
+  font-size: calc(308.852 * var(--u) * var(--fit-hero));
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: calc(24.7082 * var(--u) * var(--fit-hero));
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-accent);
+  animation: title-reveal 1.4s var(--ease-out) 0.3s both;
+}
+
+@keyframes title-reveal {
+  from {
+    opacity: 0;
+    translate: 0 calc(60 * var(--u));
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title {
+    animation: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .banner {
+    height: clamp(15rem, 58vw, 30rem);
+    margin-inline: 0;
+  }
+
+  .title {
+    margin-top: calc(var(--fs-hero) * -0.45);
+    padding-inline: var(--page-pad);
+    font-size: var(--fs-hero);
+    letter-spacing: 0.06em;
+    white-space: normal;
+  }
+}
